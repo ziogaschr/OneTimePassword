@@ -20,8 +20,7 @@ Pod::Spec.new do |s|
     "SWIFT_INCLUDE_PATHS[sdk=watchsimulator*]"    => "$(SRCROOT)/OneTimePassword/CommonCrypto/watchsimulator",
   }
 
-  s.preserve_paths = "CommonCrypto/*", 'CommonCrypto/**/*'
-  s.resources = "CommonCrypto/*", 'CommonCrypto/**/*'
+  s.preserve_paths = "CommonCrypto/*"
   # The prepare_command "will be executed after the Pod is downloaded."
   # The script is *not* run on every build, or even on every `pod install`, so if the selected
   # Xcode path changes after the pod is downloaded, you may need to clear the pod from the cache at
@@ -37,6 +36,6 @@ Pod::Spec.new do |s|
 
   s.subspec "without-keychain" do |keychain|
     keychain.source_files = "Sources/*.{swift}"
-    keychain.exclude_files = "Sources/Keychain.swift"
+    # keychain.exclude_files = "Sources/Keychain.swift"
   end
 end
