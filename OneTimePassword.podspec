@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target     = "8.0"
   s.watchos.deployment_target = "2.0"
   s.source       = { :git => "https://github.com/mattrubin/OneTimePassword.git", :tag => s.version }
-  s.source_files = "Sources/*.{swift}"
   s.requires_arc = true
   s.dependency "Base32", "~> 1.1.2"
   s.pod_target_xcconfig = {
@@ -27,4 +26,13 @@ Pod::Spec.new do |s|
   # ~/Library/Caches/CocoaPods so the script can update the modulemaps with the new path.
   # https://guides.cocoapods.org/syntax/podspec.html#prepare_command
   s.prepare_command = "CommonCrypto/injectXcodePath.sh"
+
+  s.subspec "Core" do |core|
+    core.source_files = "Sources/*.{swift}"
+  end
+
+  s.subspec "without-keychain" do |keychain|
+    keychain.source_files = "Sources/*.{swift}"
+    keychain.exclude_files = "Sources/Keychain.swift"
+  end
 end
