@@ -28,14 +28,14 @@ Pod::Spec.new do |s|
   # https://guides.cocoapods.org/syntax/podspec.html#prepare_command
   s.prepare_command = "CommonCrypto/injectXcodePath.sh"
 
-  s.default_subspec = "Core"
+  s.default_subspec = "Core", "Keychain"
 
   s.subspec "Core" do |core|
     core.source_files = "Sources/*.{swift}"
+    core.exclude_files = "Sources/Keychain.swift"
   end
 
-  s.subspec "without-keychain" do |keychain|
-    keychain.source_files = "Sources/*.{swift}"
-    # keychain.exclude_files = "Sources/Keychain.swift"
+  s.subspec "Keychain" do |keychain|
+    keychain.source_files = "Sources/Keychain.swift"
   end
 end
