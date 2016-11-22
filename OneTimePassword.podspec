@@ -28,12 +28,12 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |core|
     core.source_files = "Sources/*.{swift}"
-    s.preserve_paths = "CommonCrypto/*"
+    core.preserve_paths = "CommonCrypto/*"
   end
 
   s.subspec "without-keychain" do |keychain|
     keychain.source_files = "Sources/*.{swift}"
     keychain.exclude_files = "Sources/Keychain.swift"
-    s.preserve_paths = "CommonCrypto/*"
+    keychain.preserve_paths = "CommonCrypto/*"
   end
 end
